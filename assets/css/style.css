@@ -1,0 +1,95 @@
+@import "./reset.css";
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #e3f2fd;
+}
+
+box {
+    width: 800px;
+
+    background-color: #183950;
+
+    border-radius: 1rem;
+
+    padding: 20px 30px;
+}
+
+header h2 {
+    font-size: 1.5rem;
+}
+
+header .col {
+    display: flex;
+    align-items: center;
+}
+
+.col span {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.col input {
+    margin: 0 20px;
+}
+
+.slider input {
+    accent-color: #ffffff99;
+}
+
+.key-check input {
+    width: 50px;
+    height: 25px;
+
+    position: relative;
+
+    appearance: none;
+
+    background-color: #ffffff99;
+
+    border-radius: 1rem;
+
+    cursor: pointer;
+}
+
+.key-check input::before {
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: .125rem;
+
+    background-color: #183950;
+
+    border: 1px solid #00000099;
+    border-radius: inherit;
+
+    transition: all .25s;
+}
+
+.key-check input:checked::before {
+    width: 20px;
+    height: 20px;
+
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 1.625rem;
+
+    background-color: #183950;
+
+    border: 1px solid #00000099;
+    border-radius: inherit;
+
+}
