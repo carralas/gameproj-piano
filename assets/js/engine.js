@@ -1,12 +1,14 @@
 const state = {
     /* views - variáveis para exibição na tela */
     view: {
-        keys: document.querySelectorAll('.key')
+        keys: document.querySelectorAll('.key'),
+        volumeSlider: document.querySelector('.slider input')
     },
     /* values - variáveis para controle interno */
     values: {
         validKeys: [],
-        clickedKey: ''
+        clickedKey: '',
+        volume: .5
     },
     /* actions - variáveis que cotrolam ações na engine */
     actions: {
@@ -41,8 +43,15 @@ function animateKeyboard(key) {
     }, 125)
 }
 
+function addListenerSlider() {
+    state.view.volumeSlider.addEventListener('input', (slider) => {
+        state.objects.audio.volume = slider.target.value
+    })
+}
+
 function main() {
     addListenerKey()
+    addListenerSlider()
 }
 
 main();
