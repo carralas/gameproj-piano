@@ -19,6 +19,7 @@ function addListenerKey() {
     state.view.keys.forEach((key) => {
         key.addEventListener('click', () => playTune(key.dataset.key))
     })
+    document.addEventListener('keydown', (pressed) => playTune(pressed.key))
 }
 
 function playTune(note) {
