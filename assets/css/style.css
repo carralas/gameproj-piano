@@ -166,3 +166,7 @@ header .col {
     position: absolute;
     bottom: .75rem;
 }
+
+.key.hidden span {
+    display: none;
+}

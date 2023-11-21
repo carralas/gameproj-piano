@@ -2,7 +2,8 @@ const state = {
     /* views - variáveis para exibição na tela */
     view: {
         keys: document.querySelectorAll('.key'),
-        volumeSlider: document.querySelector('.slider input')
+        volumeSlider: document.querySelector('.slider input'),
+        toggleChecker: document.querySelector('.key-check input')
     },
     /* values - variáveis para controle interno */
     values: {
@@ -49,9 +50,18 @@ function addListenerSlider() {
     })
 }
 
+function addListenerChecker() {
+    state.view.toggleChecker.addEventListener('click', () => {
+        state.view.keys.forEach((key) => {
+            key.classList.toggle('hidden')
+        })
+    })
+}
+
 function main() {
     addListenerKey()
     addListenerSlider()
+    addListenerChecker()
 }
 
 main();
