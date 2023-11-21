@@ -11,9 +11,6 @@ const state = {
         clickedKey: '',
         volume: .5
     },
-    /* actions - variáveis que cotrolam ações na engine */
-    actions: {
-    },
     /* objects - variáveis que carregam informações externas */
     objects: {
         audio: new Audio()
@@ -21,14 +18,22 @@ const state = {
 }
 
 function addListenerKey() {
+    /* função que possibilita teclas serem clicadas */
+
+    /* adiciona interação de mouse com cada uma das teclas */
     state.view.keys.forEach((key) => {
         key.addEventListener('click', () => playTune(key.dataset.key.toLowerCase()))
         state.values.validKeys.push(key.dataset.key.toLowerCase())
     })
+
+    /* adiciona interação do teclado com a respectiva tecla */
     document.addEventListener('keydown', (pressed) => playTune(pressed.key))
 }
 
 function playTune(note) {
+    /* função que executa a nota */
+
+    /* checagem para garantir que apenas teclas válidas sejam executadas */
     if (state.values.validKeys.includes(note)) {
         state.objects.audio.src = `./assets/audio/${note}.wav`
         state.objects.audio.play()
@@ -37,6 +42,8 @@ function playTune(note) {
 }
 
 function animateKeyboard(key) {
+    /* função que anima a tecla */
+
     state.values.clickedKey = document.querySelector(`[data-key='${key}']`)
     state.values.clickedKey.classList.add('active')
     setTimeout(() => {
@@ -45,12 +52,16 @@ function animateKeyboard(key) {
 }
 
 function addListenerSlider() {
+    /* função que regula o volume */
+
     state.view.volumeSlider.addEventListener('input', (slider) => {
         state.objects.audio.volume = slider.target.value
     })
 }
 
 function addListenerChecker() {
+    /* função que ativa ou desativa visibilidade do texto das teclas */
+
     state.view.toggleChecker.addEventListener('click', () => {
         state.view.keys.forEach((key) => {
             key.classList.toggle('hidden')
