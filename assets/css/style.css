@@ -154,7 +154,7 @@ header .col {
     border: 1px solid #000000;
     border-radius: .25rem;
 
-    margin: 0 17.5px 0 -17.5px;
+    margin: 0 -25px 0 -25px;
 }
 
 .key span {
