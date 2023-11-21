@@ -5,6 +5,7 @@ const state = {
     },
     /* values - variáveis para controle interno */
     values: {
+        validKeys: [],
         clickedKey: ''
     },
     /* actions - variáveis que cotrolam ações na engine */
@@ -19,14 +20,17 @@ const state = {
 function addListenerKey() {
     state.view.keys.forEach((key) => {
         key.addEventListener('click', () => playTune(key.dataset.key.toLowerCase()))
+        state.values.validKeys.push(key.dataset.key.toLowerCase())
     })
     document.addEventListener('keydown', (pressed) => playTune(pressed.key))
 }
 
 function playTune(note) {
-    state.objects.audio.src = `./assets/audio/${note}.wav`
-    state.objects.audio.play()
-    animateKeyboard(note.toUpperCase())
+    if (state.values.validKeys.includes(note)) {
+        state.objects.audio.src = `./assets/audio/${note}.wav`
+        state.objects.audio.play()
+        animateKeyboard(note.toUpperCase())
+    }
 }
 
 function animateKeyboard(key) {
